@@ -65,6 +65,7 @@ function useOperator(operator) {
     } else {
         const calculation = calculate[operatorValue](firstValue, currentValue);
         firstValue = calculation;
+        negativeValue = false;
         calculatorDisplay.textContent = calculation;
     }
 
@@ -76,16 +77,17 @@ function useOperator(operator) {
 // Toggle between postive and negative value
 function toggleNegative() {
     let displayValue = calculatorDisplay.textContent;
+    
     if (displayValue == 0) return;
 
-    if (!negativeValue) {
+    negativeValue = !negativeValue;
+    if (negativeValue) {
         displayValue = `-${displayValue}`;
     } else {
         displayValue = Math.abs(displayValue);
     }
 
     calculatorDisplay.textContent = displayValue;
-    negativeValue = !negativeValue;
 }
 
 // Add Event Listeners for numbers, operators, decimal buttons
