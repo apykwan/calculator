@@ -82,12 +82,15 @@ function toggleNegative() {
     if (displayValue == 0) return;
 
     negativeValue = !negativeValue;
-    if (negativeValue) {
-        displayValue = `-${displayValue}`;
+    if (negativeValue && displayValue > 0) {
+        displayValue =  -Math.abs(displayValue);
+        firstValue = Number(displayValue);
     } else {
         displayValue = Math.abs(displayValue);
+        firstValue = Number(displayValue);
     }
 
+    negativeValue = false;
     calculatorDisplay.textContent = displayValue;
 }
 
