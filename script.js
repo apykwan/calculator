@@ -48,6 +48,7 @@ function resetAll() {
     firstValue = 0;
     operatorValue = 0;
     awaitingNextValue = false;
+    negativeValue = false;
     calculatorDisplay.textContent = '0';
 }
 
@@ -65,12 +66,12 @@ function useOperator(operator) {
     } else {
         const calculation = calculate[operatorValue](firstValue, currentValue);
         firstValue = calculation;
-        negativeValue = false;
         calculatorDisplay.textContent = calculation;
     }
 
     // Ready for next value, store operator
     awaitingNextValue = true;
+    negativeValue = false;
     operatorValue = operator;
 }
 
